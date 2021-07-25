@@ -1,5 +1,10 @@
 from random import random
-
+def checkfloat(a):
+    try:
+        float(a)
+        return True
+    except ValueError:
+        return False
 def gameover_rally(a,b,d):
     return (a>=25 and d>= 2) or (b>=25 and d>= 2)
 
@@ -45,9 +50,46 @@ def simOnegame(a,b):
     return scoreA, scoreB
 
 def getInputs():
-    a = float(input("Enter the probability of Team A: "))
-    b = float(input("Enter the probability of Team B: "))
-    n = int(input("How many game should be simulated? "))
+    while True:
+        print("Enter a value between 0 and 1")
+        a = input("Enter the probability of Team A: ")
+        print()
+        value = checkfloat(a)
+        if value == True :
+            a = float(a)
+            break
+    while not (0<a<1):
+        while True:
+            print("Enter a value between 0 and 1")
+            a = input("Enter the probability of Team A: ")
+            print()
+            value = checkfloat(a)
+            if value == True :
+                a = float(a)
+                break
+    while True:
+        print("Enter a value between 0 and 1")
+        b = input("Enter the probability of Team B:")
+        print()
+        value = checkfloat(b)
+        if value == True:
+            b = float(b)
+            break
+    while not (0<b<1):
+       while True:
+            print("Enter a value between 0 and 1")
+            b = input("Enter the probability of Team B: ")
+            print()
+            value = checkfloat(b)
+            if value == True :
+                b = float(b)
+                break 
+    while True:
+        n = input("How many game should be simulated? ")
+        if n.isdigit():
+            n= int(n)
+            break
+        print("Enter a value between 0 and 1")
     return a, b, n
 
 def simNgames(n, probA, probB):
@@ -102,7 +144,11 @@ def main():
     printTotalwins(winsA1, winsA2, winsB1, winsB2)
     print()
     printSummary(winsA1, winsA2, winsB1, winsB2, probA, probB)
+
+
+        
 main()
+
     
         
     
