@@ -1,4 +1,5 @@
 from random import random
+
 def checkfloat(a):
     try:
         float(a)
@@ -89,7 +90,7 @@ def getInputs():
         if n.isdigit():
             n= int(n)
             break
-        print("Enter a value between 0 and 1")
+        print("Enter a value greater than 0.")
     return a, b, n
 
 def simNgames(n, probA, probB):
