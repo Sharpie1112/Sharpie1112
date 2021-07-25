@@ -12,20 +12,38 @@ def chooseaword():
 def main():
     word = chooseaword()
     n = len(word)
-    p = n-1
-    position = 1
-    message = word[0]
     
-    print(message + p *"*")
+    list = []
+    for i in range(n):
+        list.append("*")
+    message = n *"*"
+    
+    print(message)
+    print("Your word have {} letters.".format(n))
+    print()
     
     tentative = 0
     while tentative != 8:
-        guess = input("Enter the next caracter: ")
-        if guess == word[position]:
-            p -=1
-            message = message + guess
-            print(message+ p * "*")
-            position+=1
+        guess = input("Enter a letter: ")
+    
+        if guess in word:
+            
+            v = word.count(guess)
+            
+            if v==1:
+                pos = word.find(guess)
+                list[pos] = guess
+                message = "".join(list)
+                print(message)
+            else:
+                pos = word.find(guess)
+                list[pos] = guess
+                pos = word.rfind(guess)
+                list[pos] = guess
+                message = "".join(list)
+                print(message)
+                
+
         tentative +=1
 
         if word == message :
